@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+RUN --security=insecure
+
 RUN apt update
 
 # Install docker
