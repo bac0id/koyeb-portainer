@@ -4,7 +4,7 @@ echo "sleep 10 seconds to wait docker init"
 sleep 10
 
 # Make swap
-dd if=/dev/zero of=/swapfile bs=1M count=2048
+dd if=/dev/zero of=/swapfile bs=1M count=4096
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
