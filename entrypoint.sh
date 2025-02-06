@@ -20,6 +20,8 @@ docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 \
     -v portainer_data:/data \
     portainer/portainer-ce
 
+# Start SSH service
+service ssh start
 
 echo "Entrypoint.sh Done."
 read -n 1 -s  # Wait to not finish bash script
