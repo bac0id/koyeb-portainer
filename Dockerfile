@@ -33,7 +33,7 @@ RUN ssh-keygen -A
 # Expose ports of ssh
 EXPOSE 22
 
-
+# Copy entrypoint script
 COPY entrypoint.sh .
 WORKDIR /
 
