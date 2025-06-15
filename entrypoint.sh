@@ -89,11 +89,33 @@ start_ssh() {
   echo "SSH service started."
 }
 
+start_cron() {
+  echo "Starting cron service..."
+  service cron start
+  echo "Cron service started."
+}
+
+add_cron_to_curl_myself() {
+  CRON_JOB="*/10 * * * * /usr/bin/curl -s -o /dev/null $KOYEB_PUBLIC_DOMAIN"
+  CRON_COMMENT="# Koyeb public domain access every 10 minutes"
+  (
+    crontab -l 2>/dev/null
+    echo "$CRON_COMMENT"
+    echo "$CRON_JOB"
+  ) | crontab -
+}
+
 make_swap
+
 start_docker_daemon
 run_portainer_ce
+
 config_ssh
 start_ssh
+
+start_cron
+add_cron_to_curl_myself
+
 
 echo "entrypoint.sh Done. Keeping container alive..."
 tail -f /var/log/dockerd.log
