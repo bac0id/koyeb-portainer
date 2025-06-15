@@ -26,7 +26,6 @@ RUN mkdir /var/run/sshd
 RUN chmod 0755 /var/run/sshd
 
 # Generate SSH host keys
-RUN ssh-keygen -a
 RUN ssh-keygen -t rsa
 
 # Copy entrypoint script
