@@ -47,7 +47,7 @@ swapon /swapfile
 echo "Installing portainer-ce:$PORTAINER_TAG"
 docker pull "portainer/portainer-ce:$PORTAINER_TAG"
 docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 -p 9000:9000 \
+docker run -d -p 8000:8000 -p 9000:9000 \
     --name portainer \
     --restart=always \
     -v /var/run/docker.sock:/var/run/docker.sock \

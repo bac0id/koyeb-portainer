@@ -17,7 +17,6 @@ RUN apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 # Expose ports of portainer-ce
 EXPOSE 8000
 EXPOSE 9000
-EXPOSE 9443
 
 
 # Install SSH server
