@@ -18,7 +18,6 @@ RUN apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 EXPOSE 8000
 EXPOSE 9000
 
-
 # Install SSH server
 RUN apt install -y openssh-server
 
@@ -27,10 +26,8 @@ RUN mkdir /var/run/sshd
 RUN chmod 0755 /var/run/sshd
 
 # Generate SSH host keys
-RUN ssh-keygen -A
-
-# Expose ports of ssh
-EXPOSE 22
+RUN ssh-keygen -a
+RUN ssh-keygen -t rsa
 
 # Copy entrypoint script
 COPY entrypoint.sh .
