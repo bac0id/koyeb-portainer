@@ -18,8 +18,8 @@ RUN apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 EXPOSE 8000
 EXPOSE 9000
 
-# Install SSH server
-RUN apt install -y openssh-server
+# Install SSH server & cron
+RUN apt install -y openssh-server cron
 
 # Create SSH directory and set proper permissions
 RUN mkdir /var/run/sshd
