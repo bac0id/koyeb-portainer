@@ -34,20 +34,7 @@ done
 
 start_docker_daemon() {
   echo "Starting Docker daemon..."
-  nohup dockerd >/var/log/dockerd.log 2>&1 &
-
-  echo "Waiting for Docker daemon to be ready..."
-  TIMEOUT=60
-  START_TIME=$(date +%s)
-  while ! docker info >/dev/null 2>&1; do
-    if [[ $(($(date +%s) - START_TIME)) -ge $TIMEOUT ]]; then
-      echo "Error: Docker daemon did not start within $TIMEOUT seconds."
-      cat /var/log/dockerd.log # Output Docker daemon logs for debugging
-      exit 1
-    fi
-    echo "Docker not yet ready, waiting..."
-    sleep 2
-  done
+  service docker start
   echo "Docker daemon is ready."
 }
 
